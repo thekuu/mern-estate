@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/*adding a background color*/
+body {  
+    background-color: rgb(241, 245, 241);
+}
