@@ -49,7 +49,7 @@ export default function Profile() {
     e.preventDefault();
     try {
       dispatch(updateUserStart());
-      const res = await fetch(`/api/user/update/${currentUser._id} `, {
+      const res = await fetch(`/api/user/update/${currentUser._id}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -95,7 +95,7 @@ export default function Profile() {
         <span className='text-red-700 cursor-pointer'>Sign out</span>
       </div>
       <p className='text-red-700 mt-5'>{error ? error : ""}</p>
-      <p className='text-green-700 mt-5'>{updateSuccess? 'User is updated successfully!' : ''}</p>
+      <p className='text-green-700 mt-5'>{updateSuccess && !error ? 'User is updated successfully!' : ''}</p>
     </div>
   )
 }
