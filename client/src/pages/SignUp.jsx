@@ -43,22 +43,42 @@ export default function SignUp() {
   }
   console.log(formData)
   return (
-    <div className='p-3 max-w-lg mx-auto'>
-      <h1 className = 'text-3xl text-center font-semibold my-7'>Sign Up</h1>
-      <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-        <input type = 'text' placeholder = 'username' className='border-0 p-3 rounded-lg' id='username' onChange = {handleChange} required/>
-        <input type = 'email' placeholder = 'email' className='border-0 p-3 rounded-lg' id='email' onChange = {handleChange} required/>
-        <input type = 'password' placeholder = 'password' className='border-0 p-3 rounded-lg' id='password' onChange = {handleChange} required/>
-        <button disabled={loading} className='bg-slate-700 text-white p-3 rounded-lg uppercase hover:opacity-95 disabled:opacity-80'>{loading? 'Loading...' : 'Sign Up'}</button>
-        <OAuth/>
-      </form>
-      <div className="flex gap-2 mt-5">
-        <p>Have an account?</p>
-        <Link to='/sign-in'>
-          <span className='text-blue-700'>Sign in</span>
-        </Link>
+    <div className='p-6 max-w-lg mx-auto min-h-screen flex flex-col justify-center'>
+      <div className='bg-white rounded-3xl shadow-xl shadow-slate-200 border border-slate-100 p-8 sm:p-12'>
+        <div className='text-center mb-10'>
+          <h1 className='text-3xl font-black text-slate-900 mb-2'>Create Account</h1>
+          <p className='text-slate-500 font-medium'>Join Homi Estate and find your dream home</p>
+        </div>
+        <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+          <div className='space-y-1'>
+            <label className='text-xs font-bold text-slate-400 uppercase ml-1'>Username</label>
+            <input type='text' placeholder='johndoe' className='w-full bg-slate-50 border border-slate-200 p-4 rounded-xl outline-none focus:ring-2 focus:ring-indigo-100 focus:border-indigo-400 transition-all font-medium' id='username' onChange={handleChange} required/>
+          </div>
+          <div className='space-y-1'>
+            <label className='text-xs font-bold text-slate-400 uppercase ml-1'>Email Address</label>
+            <input type='email' placeholder='name@company.com' className='w-full bg-slate-50 border border-slate-200 p-4 rounded-xl outline-none focus:ring-2 focus:ring-indigo-100 focus:border-indigo-400 transition-all font-medium' id='email' onChange={handleChange} required/>
+          </div>
+          <div className='space-y-1'>
+            <label className='text-xs font-bold text-slate-400 uppercase ml-1'>Password</label>
+            <input type='password' placeholder='••••••••' className='w-full bg-slate-50 border border-slate-200 p-4 rounded-xl outline-none focus:ring-2 focus:ring-indigo-100 focus:border-indigo-400 transition-all font-medium' id='password' onChange={handleChange} required/>
+          </div>
+          <button disabled={loading} className='bg-slate-900 text-white p-4 rounded-xl font-bold uppercase hover:bg-slate-800 disabled:opacity-50 transition-all shadow-xl shadow-slate-200 active:scale-95 mt-2'>
+            {loading ? 'Creating Account...' : 'Sign Up'}
+          </button>
+          <div className='relative my-4'>
+            <div className='absolute inset-0 flex items-center'><span className='w-full border-t border-slate-100'></span></div>
+            <div className='relative flex justify-center text-xs uppercase'><span className='bg-white px-2 text-slate-400 font-bold'>Or continue with</span></div>
+          </div>
+          <OAuth/>
+        </form>
+        <div className="flex justify-center gap-2 mt-8 pt-8 border-t border-slate-50">
+          <p className='text-slate-500 font-medium'>Have an account?</p>
+          <Link to='/sign-in'>
+            <span className='text-indigo-600 font-bold hover:underline'>Sign in</span>
+          </Link>
+        </div>
+        {error && <p className='text-red-500 text-center font-medium mt-4 bg-red-50 py-3 rounded-xl'>{error}</p>}
       </div>
-      {error && <p className='text-red-500 mt-5'>{error}</p>}
     </div>
   )
 }
