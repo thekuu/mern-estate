@@ -5,24 +5,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 body {  
-    background-color: #F5F6F7;
+    background-color: #F9F9FB;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    color: #111827;
+    color: #1A1D1F;
     -webkit-font-smoothing: antialiased;
 }
 
 input:invalid {
-    border-color: #D12E2E;
+    border-color: #E22B2B;
 }
 
 .btn-primary {
-    @apply bg-[#1E4E91] text-white font-semibold py-2 px-4 rounded transition-colors hover:bg-[#163B6F] active:bg-[#0F294D] disabled:opacity-50;
+    @apply bg-[#0059E1] text-white font-semibold py-2 px-4 rounded transition-colors hover:bg-[#0047B3] active:bg-[#003B96] disabled:opacity-50;
 }
 
 .input-field {
-    @apply w-full bg-white border border-[#DDE1E6] p-3 rounded text-sm focus:ring-1 focus:ring-[#1E4E91] focus:border-[#1E4E91] outline-none transition-all placeholder:text-[#9BA3AF];
+    @apply w-full bg-white border border-[#D1D5DB] p-3 rounded text-sm focus:ring-1 focus:ring-[#0059E1] focus:border-[#0059E1] outline-none transition-all placeholder:text-[#9CA3AF];
 }
 
 .card {
-    @apply bg-white border border-[#DDE1E6] rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow;
+    @apply bg-white border border-[#E5E7EB] rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow;
 }

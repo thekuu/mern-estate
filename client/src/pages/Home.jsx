@@ -49,20 +49,20 @@ export default function Home() {
   return (
     <div className='bg-white min-h-screen'>
       {/* Hero Section */}
-      <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-28 border-b border-[#DDE1E6]'>
-        <div className='max-w-4xl'>
-          <h1 className='text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-[#111827] mb-8 leading-[1.1]'>
-            Modern real estate <br /> <span className='text-[#1E4E91] underline decoration-[3px] underline-offset-8'>for Ethiopia.</span>
+      <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-20'>
+        <div className='max-w-3xl'>
+          <h1 className='text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-[#1A1D1F] mb-6'>
+            Find a home that <br /> <span className='text-[#0059E1]'>truly fits</span> your life
           </h1>
-          <p className='text-xl text-[#4B5563] mb-12 max-w-2xl leading-relaxed font-medium'>
-            A professional platform to browse verified listings, connect with top agents, and find your next investment with confidence.
+          <p className='text-lg text-[#64748B] mb-8 max-w-xl'>
+            Browse the most accurate listings, get detailed property info, and connect with verified agents in Ethiopia.
           </p>
-          <div className='flex flex-wrap items-center gap-6'>
-            <Link to='/search' className='bg-[#1E4E91] text-white px-10 py-4 rounded font-bold hover:bg-[#163B6F] transition-all shadow-md active:scale-[0.98]'>
-              Browse Properties
+          <div className='flex items-center gap-4'>
+            <Link to='/search' className='bg-[#0059E1] text-white px-8 py-3 rounded font-bold hover:bg-[#0047B3] transition-colors'>
+              Search Properties
             </Link>
-            <Link to='/about' className='text-[#111827] font-bold border-b-2 border-transparent hover:border-[#1E4E91] py-2 transition-all'>
-              Our Story
+            <Link to='/about' className='text-[#4B5563] font-bold hover:text-[#0059E1] px-4 py-3 transition-colors'>
+              How it works
             </Link>
           </div>
         </div>
