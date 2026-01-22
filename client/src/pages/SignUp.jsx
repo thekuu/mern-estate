@@ -43,41 +43,41 @@ export default function SignUp() {
   }
   console.log(formData)
   return (
-    <div className='p-6 max-w-lg mx-auto min-h-screen flex flex-col justify-center'>
-      <div className='bg-white rounded-3xl shadow-xl shadow-slate-200 border border-slate-100 p-8 sm:p-12'>
-        <div className='text-center mb-10'>
-          <h1 className='text-3xl font-black text-slate-900 mb-2'>Create Account</h1>
-          <p className='text-slate-500 font-medium'>Join Homi Estate and find your dream home</p>
+    <div className='p-4 max-w-md mx-auto min-h-[calc(100vh-80px)] flex flex-col justify-center'>
+      <div className='bg-white p-8 border border-gray-200 rounded-lg'>
+        <div className='mb-8'>
+          <h1 className='text-2xl font-bold text-gray-900 mb-1'>Create an account</h1>
+          <p className='text-gray-500 text-sm'>Join Homi Estate to start managing properties</p>
         </div>
-        <form onSubmit={handleSubmit} className="flex flex-col gap-5">
-          <div className='space-y-1'>
-            <label className='text-xs font-bold text-slate-400 uppercase ml-1'>Username</label>
-            <input type='text' placeholder='johndoe' className='w-full bg-slate-50 border border-slate-200 p-4 rounded-xl outline-none focus:ring-2 focus:ring-indigo-100 focus:border-indigo-400 transition-all font-medium' id='username' onChange={handleChange} required/>
+        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+          <div className='space-y-1.5'>
+            <label className='text-sm font-medium text-gray-700'>Username</label>
+            <input type='text' placeholder='johndoe' className='w-full border border-gray-300 px-3 py-2 rounded-md focus:ring-1 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all text-sm' id='username' onChange={handleChange} required/>
           </div>
-          <div className='space-y-1'>
-            <label className='text-xs font-bold text-slate-400 uppercase ml-1'>Email Address</label>
-            <input type='email' placeholder='name@company.com' className='w-full bg-slate-50 border border-slate-200 p-4 rounded-xl outline-none focus:ring-2 focus:ring-indigo-100 focus:border-indigo-400 transition-all font-medium' id='email' onChange={handleChange} required/>
+          <div className='space-y-1.5'>
+            <label className='text-sm font-medium text-gray-700'>Email</label>
+            <input type='email' placeholder='you@example.com' className='w-full border border-gray-300 px-3 py-2 rounded-md focus:ring-1 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all text-sm' id='email' onChange={handleChange} required/>
           </div>
-          <div className='space-y-1'>
-            <label className='text-xs font-bold text-slate-400 uppercase ml-1'>Password</label>
-            <input type='password' placeholder='••••••••' className='w-full bg-slate-50 border border-slate-200 p-4 rounded-xl outline-none focus:ring-2 focus:ring-indigo-100 focus:border-indigo-400 transition-all font-medium' id='password' onChange={handleChange} required/>
+          <div className='space-y-1.5'>
+            <label className='text-sm font-medium text-gray-700'>Password</label>
+            <input type='password' placeholder='••••••••' className='w-full border border-gray-300 px-3 py-2 rounded-md focus:ring-1 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all text-sm' id='password' onChange={handleChange} required/>
           </div>
-          <button disabled={loading} className='bg-slate-900 text-white p-4 rounded-xl font-bold uppercase hover:bg-slate-800 disabled:opacity-50 transition-all shadow-xl shadow-slate-200 active:scale-95 mt-2'>
-            {loading ? 'Creating Account...' : 'Sign Up'}
+          <button disabled={loading} className='w-full bg-blue-600 text-white py-2 rounded-md font-semibold hover:bg-blue-700 disabled:opacity-50 transition-all mt-2 text-sm'>
+            {loading ? 'Creating account...' : 'Sign up'}
           </button>
-          <div className='relative my-4'>
-            <div className='absolute inset-0 flex items-center'><span className='w-full border-t border-slate-100'></span></div>
-            <div className='relative flex justify-center text-xs uppercase'><span className='bg-white px-2 text-slate-400 font-bold'>Or continue with</span></div>
+          <div className='relative my-2'>
+            <div className='absolute inset-0 flex items-center'><span className='w-full border-t border-gray-200'></span></div>
+            <div className='relative flex justify-center text-xs uppercase'><span className='bg-white px-2 text-gray-400'>or</span></div>
           </div>
           <OAuth/>
         </form>
-        <div className="flex justify-center gap-2 mt-8 pt-8 border-t border-slate-50">
-          <p className='text-slate-500 font-medium'>Have an account?</p>
+        <div className="flex justify-center gap-1.5 mt-6 pt-6 border-t border-gray-100 text-sm">
+          <p className='text-gray-500'>Already have an account?</p>
           <Link to='/sign-in'>
-            <span className='text-indigo-600 font-bold hover:underline'>Sign in</span>
+            <span className='text-blue-600 font-medium hover:underline'>Sign in</span>
           </Link>
         </div>
-        {error && <p className='text-red-500 text-center font-medium mt-4 bg-red-50 py-3 rounded-xl'>{error}</p>}
+        {error && <p className='text-red-600 text-center text-sm font-medium mt-4 py-2 px-3 bg-red-50 rounded-md border border-red-100'>{error}</p>}
       </div>
     </div>
   )

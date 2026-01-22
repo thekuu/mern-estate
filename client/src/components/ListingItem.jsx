@@ -5,45 +5,45 @@ import {FaBed, FaBath} from 'react-icons/fa'
 
 export default function ListingItem({listing}) {
   return (
-    <div className='group bg-white border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-500 overflow-hidden rounded-2xl w-full sm:w-[320px]'>
+    <div className='group bg-white border border-gray-200 hover:border-gray-300 transition-all duration-300 overflow-hidden rounded-lg w-full'>
       <Link to={`/listing/${listing._id}`}>
-        <div className='relative overflow-hidden aspect-[4/3]'>
-            <img src={listing.imageUrls[0]} alt="listing cover" className='h-full w-full object-cover group-hover:scale-110 transition-transform duration-700'/>
-            <div className='absolute top-3 left-3 flex gap-2'>
+        <div className='relative aspect-[16/10] overflow-hidden bg-gray-100'>
+            <img src={listing.imageUrls[0]} alt="listing cover" className='h-full w-full object-cover group-hover:scale-105 transition-transform duration-500'/>
+            <div className='absolute top-2.5 left-2.5 flex gap-1.5'>
                 {listing.offer && (
-                    <span className='bg-amber-500 text-white text-[10px] font-bold px-2 py-1 rounded-md uppercase tracking-wider shadow-sm'>Offer</span>
+                    <span className='bg-orange-600 text-white text-[10px] font-bold px-1.5 py-0.5 rounded uppercase tracking-tight shadow-sm'>Offer</span>
                 )}
-                <span className='bg-indigo-600/90 backdrop-blur-sm text-white text-[10px] font-bold px-2 py-1 rounded-md uppercase tracking-wider shadow-sm'>
+                <span className='bg-gray-900/90 text-white text-[10px] font-bold px-1.5 py-0.5 rounded uppercase tracking-tight shadow-sm'>
                     {listing.type === 'rent' ? 'For Rent' : 'For Sale'}
                 </span>
             </div>
         </div>
-        <div className='p-5 flex flex-col gap-3 w-full'>
-            <div className='flex flex-col gap-1'>
-                <h3 className='truncate text-lg font-bold text-slate-800 group-hover:text-indigo-600 transition-colors'>{listing.name}</h3>
+        <div className='p-4 flex flex-col gap-2 w-full'>
+            <div className='flex flex-col gap-0.5'>
+                <h3 className='truncate text-base font-semibold text-gray-900'>{listing.name}</h3>
                 <div className='flex items-center gap-1'>
-                    <HiLocationMarker className='h-4 w-4 text-slate-400'/>
-                    <p className='text-xs text-slate-500 truncate w-full font-medium'>{listing.address}</p>
+                    <HiLocationMarker className='h-3.5 w-3.5 text-gray-400'/>
+                    <p className='text-xs text-gray-500 truncate w-full'>{listing.address}</p>
                 </div>
             </div>
             
-            <p className='text-sm text-slate-600 line-clamp-2 leading-relaxed h-10'>{listing.description}</p>
+            <p className='text-xs text-gray-600 line-clamp-2 leading-snug h-8'>{listing.description}</p>
             
-            <div className='flex items-center justify-between mt-2 pt-4 border-t border-slate-50'>
-                <div className='flex items-center gap-3 text-slate-500'>
-                    <div className='flex items-center gap-1 text-xs font-semibold'>
-                        <FaBed className='text-indigo-400'/>
+            <div className='flex items-center justify-between mt-1 pt-3 border-t border-gray-50'>
+                <div className='flex items-center gap-2.5 text-gray-500'>
+                    <div className='flex items-center gap-1 text-[11px] font-medium'>
+                        <FaBed className='text-gray-400'/>
                         <span>{listing.bedrooms}</span>
                     </div>
-                    <div className='flex items-center gap-1 text-xs font-semibold'>
-                        <FaBath className='text-indigo-400'/>
+                    <div className='flex items-center gap-1 text-[11px] font-medium'>
+                        <FaBath className='text-gray-400'/>
                         <span>{listing.bathrooms}</span>
                     </div>
                 </div>
-                <p className='text-indigo-600 font-bold text-lg'>
+                <p className='text-gray-900 font-bold text-base'>
                     {listing.offer ? listing.discountPrice.toLocaleString('en-US') : listing.regularPrice.toLocaleString('en-US')}
-                    <span className='text-[10px] font-bold ml-1 uppercase'>ETB</span>
-                    {listing.type === 'rent' && <span className='text-xs font-medium text-slate-400'>/mo</span>}
+                    <span className='text-[10px] font-semibold ml-0.5'>ETB</span>
+                    {listing.type === 'rent' && <span className='text-[10px] text-gray-400 font-normal'>/mo</span>}
                 </p>
             </div>
         </div>
