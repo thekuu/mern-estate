@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import {HiSearch} from 'react-icons/hi'
+import { FaSearch } from 'react-icons/fa'
 import { Link , useNavigate} from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
