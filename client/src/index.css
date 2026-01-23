@@ -2,31 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 body {  
     background-color: #ffffff;
     font-family: 'Inter', sans-serif;
-    color: #1a1a1a;
+    color: #111827;
     -webkit-font-smoothing: antialiased;
 }
 
-h1, h2, h3, .font-serif {
-    font-family: 'Playfair Display', serif;
-}
-
 input:invalid {
-    border-color: #991b1b;
+    border-color: #dc2626;
 }
 
 .custom-shadow {
-    box-shadow: 0 4px 20px -5px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
 }
 
-.premium-border {
-    border: 1px solid #f0f0f0;
-}
-
-.bg-off-white {
-    background-color: #fafafa;
+.hero-gradient {
+    background: #ffffff;
 }
