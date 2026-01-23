@@ -43,41 +43,41 @@ export default function SignUp() {
   }
   console.log(formData)
   return (
-    <div className='p-4 max-w-md mx-auto min-h-[calc(100vh-80px)] flex flex-col justify-center'>
-      <div className='bg-white p-8 border border-gray-200 rounded-lg'>
-        <div className='mb-8'>
-          <h1 className='text-2xl font-bold text-gray-900 mb-1'>Create an account</h1>
-          <p className='text-gray-500 text-sm'>Join Homi Estate to start managing properties</p>
+    <div className='p-6 max-w-lg mx-auto min-h-[calc(100vh-160px)] flex flex-col justify-center'>
+      <div className='bg-white p-10 border border-gray-100 rounded-sm shadow-sm'>
+        <div className='text-center mb-12'>
+          <h1 className='text-4xl font-bold text-gray-900 mb-3 leading-tight'>Sign Up</h1>
+          <p className='text-gray-400 text-sm font-medium tracking-wide uppercase opacity-80'>Begin your property journey</p>
         </div>
-        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-          <div className='space-y-1.5'>
-            <label className='text-sm font-medium text-gray-700'>Username</label>
-            <input type='text' placeholder='johndoe' className='w-full border border-gray-300 px-3 py-2 rounded-md focus:ring-1 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all text-sm' id='username' onChange={handleChange} required/>
+        <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+          <div className='space-y-2'>
+            <label className='text-[10px] font-bold text-gray-400 uppercase tracking-widest ml-1'>Full Name</label>
+            <input type='text' placeholder='Your Name' className='w-full border-b border-gray-200 px-1 py-3 focus:border-gray-900 outline-none transition-all text-sm font-medium bg-transparent' id='username' onChange={handleChange} required/>
           </div>
-          <div className='space-y-1.5'>
-            <label className='text-sm font-medium text-gray-700'>Email</label>
-            <input type='email' placeholder='you@example.com' className='w-full border border-gray-300 px-3 py-2 rounded-md focus:ring-1 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all text-sm' id='email' onChange={handleChange} required/>
+          <div className='space-y-2'>
+            <label className='text-[10px] font-bold text-gray-400 uppercase tracking-widest ml-1'>Email Address</label>
+            <input type='email' placeholder='name@domain.com' className='w-full border-b border-gray-200 px-1 py-3 focus:border-gray-900 outline-none transition-all text-sm font-medium bg-transparent' id='email' onChange={handleChange} required/>
           </div>
-          <div className='space-y-1.5'>
-            <label className='text-sm font-medium text-gray-700'>Password</label>
-            <input type='password' placeholder='••••••••' className='w-full border border-gray-300 px-3 py-2 rounded-md focus:ring-1 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all text-sm' id='password' onChange={handleChange} required/>
+          <div className='space-y-2'>
+            <label className='text-[10px] font-bold text-gray-400 uppercase tracking-widest ml-1'>Password</label>
+            <input type='password' placeholder='••••••••' className='w-full border-b border-gray-200 px-1 py-3 focus:border-gray-900 outline-none transition-all text-sm font-medium bg-transparent' id='password' onChange={handleChange} required/>
           </div>
-          <button disabled={loading} className='w-full bg-blue-600 text-white py-2 rounded-md font-semibold hover:bg-blue-700 disabled:opacity-50 transition-all mt-2 text-sm'>
-            {loading ? 'Creating account...' : 'Sign up'}
+          <button disabled={loading} className='btn-primary mt-4 uppercase text-xs tracking-widest font-bold h-14'>
+            {loading ? 'Creating...' : 'Create Account'}
           </button>
-          <div className='relative my-2'>
-            <div className='absolute inset-0 flex items-center'><span className='w-full border-t border-gray-200'></span></div>
-            <div className='relative flex justify-center text-xs uppercase'><span className='bg-white px-2 text-gray-400'>or</span></div>
+          <div className='relative my-4'>
+            <div className='absolute inset-0 flex items-center'><span className='w-full border-t border-gray-50'></span></div>
+            <div className='relative flex justify-center text-[10px] uppercase tracking-[0.2em]'><span className='bg-white px-4 text-gray-300 font-bold'>Third Party</span></div>
           </div>
           <OAuth/>
         </form>
-        <div className="flex justify-center gap-1.5 mt-6 pt-6 border-t border-gray-100 text-sm">
-          <p className='text-gray-500'>Already have an account?</p>
+        <div className="flex justify-center gap-2 mt-10 pt-10 border-t border-gray-50 text-xs font-bold uppercase tracking-widest">
+          <p className='text-gray-400'>Have an account?</p>
           <Link to='/sign-in'>
-            <span className='text-blue-600 font-medium hover:underline'>Sign in</span>
+            <span className='text-gray-900 hover:text-gray-600 transition-colors underline decoration-gray-200 underline-offset-4'>Sign In</span>
           </Link>
         </div>
-        {error && <p className='text-red-600 text-center text-sm font-medium mt-4 py-2 px-3 bg-red-50 rounded-md border border-red-100'>{error}</p>}
+        {error && <p className='text-red-500 text-center text-xs font-bold mt-6 tracking-wide italic'>* {error}</p>}
       </div>
     </div>
   )

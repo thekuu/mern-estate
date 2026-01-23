@@ -111,93 +111,112 @@ function Search() {
 
   return (
     <div className='flex flex-col md:flex-row bg-white min-h-screen'>
-      <div className='p-6 bg-white border-b md:border-r md:w-72 lg:w-80'>
-        <h2 className='text-sm font-bold text-gray-900 uppercase tracking-wider mb-6'>Filters</h2>
-        <form onSubmit={handleSubmit} className='flex flex-col gap-8'>
-          <div className='space-y-2'>
-            <label className='text-xs font-semibold text-gray-500 uppercase'>Search</label>
-            <div className='relative'>
+      <div className='p-8 bg-white border-b md:border-r md:w-80 lg:w-96'>
+        <div className='mb-10'>
+            <h2 className='text-xs font-bold text-gray-400 uppercase tracking-[0.2em] mb-2'>Search & Refine</h2>
+            <p className='text-gray-900 font-bold text-2xl'>Filters</p>
+        </div>
+        <form onSubmit={handleSubmit} className='flex flex-col gap-10'>
+          <div className='space-y-3'>
+            <label className='text-[10px] font-bold text-gray-400 uppercase tracking-widest ml-1'>Quick Search</label>
+            <div className='relative group'>
                 <input
                     type='text'
                     id='searchTerm'
-                    placeholder='City, address, zip...'
-                    className='w-full border border-gray-300 rounded-md py-2 pl-9 pr-3 text-sm focus:ring-1 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all'
+                    placeholder='Addis Ababa, Bole...'
+                    className='w-full border-b border-gray-200 py-3 pl-8 pr-3 text-sm font-medium focus:border-gray-900 outline-none transition-all placeholder:italic placeholder:opacity-50'
                     value={sidebardata.searchTerm}
                     onChange={handleChange}
                 />
-                <HiSearch className='absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-lg' />
+                <HiSearch className='absolute left-0 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-gray-900 transition-colors' />
             </div>
           </div>
 
-          <div className='space-y-2'>
-            <label className='text-xs font-semibold text-gray-500 uppercase'>Category</label>
-            <div className='flex flex-col gap-2.5'>
-              <label className='flex items-center gap-2 cursor-pointer'>
-                <input type='checkbox' id='all' className='w-4 h-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500' onChange={handleChange} checked={sidebardata.type === 'all'}/>
-                <span className='text-sm text-gray-700'>All properties</span>
-              </label>
-              <label className='flex items-center gap-2 cursor-pointer'>
-                <input type='checkbox' id='rent' className='w-4 h-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500' onChange={handleChange} checked={sidebardata.type === 'rent'}/>
-                <span className='text-sm text-gray-700'>For rent</span>
-              </label>
-              <label className='flex items-center gap-2 cursor-pointer'>
-                <input type='checkbox' id='sale' className='w-4 h-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500' onChange={handleChange} checked={sidebardata.type === 'sale'}/>
-                <span className='text-sm text-gray-700'>For sale</span>
-              </label>
-              <label className='flex items-center gap-2 cursor-pointer'>
-                <input type='checkbox' id='offer' className='w-4 h-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500' onChange={handleChange} checked={sidebardata.offer}/>
-                <span className='text-sm text-gray-700 font-medium text-blue-600'>Active offers</span>
-              </label>
+          <div className='space-y-4'>
+            <label className='text-[10px] font-bold text-gray-400 uppercase tracking-widest ml-1'>Classification</label>
+            <div className='flex flex-col gap-3.5'>
+              {[
+                {id: 'all', label: 'All Properties'},
+                {id: 'rent', label: 'Rentals Only'},
+                {id: 'sale', label: 'For Purchase'},
+                {id: 'offer', label: 'Active Promotions', color: 'text-orange-600'}
+              ].map((item) => (
+                <label key={item.id} className='flex items-center gap-3 cursor-pointer group'>
+                    <div className='w-4 h-4 rounded-sm border border-gray-300 flex items-center justify-center transition-colors group-hover:border-gray-900'>
+                        <input 
+                            type='checkbox' 
+                            id={item.id} 
+                            className='peer absolute opacity-0 w-4 h-4 cursor-pointer' 
+                            onChange={handleChange} 
+                            checked={item.id === 'offer' ? sidebardata.offer : sidebardata.type === item.id}
+                        />
+                        <div className='w-2 h-2 bg-gray-900 scale-0 peer-checked:scale-100 transition-transform duration-200'></div>
+                    </div>
+                    <span className={`text-sm tracking-wide ${item.color || 'text-gray-600'} group-hover:text-gray-900 transition-colors`}>{item.label}</span>
+                </label>
+              ))}
             </div>
           </div>
 
-          <div className='space-y-2'>
-            <label className='text-xs font-semibold text-gray-500 uppercase'>Amenities</label>
-            <div className='flex flex-col gap-2.5'>
-              <label className='flex items-center gap-2 cursor-pointer'>
-                <input type='checkbox' id='parking' className='w-4 h-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500' onChange={handleChange} checked={sidebardata.parking}/>
-                <span className='text-sm text-gray-700'>Parking</span>
-              </label>
-              <label className='flex items-center gap-2 cursor-pointer'>
-                <input type='checkbox' id='furnished' className='w-4 h-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500' onChange={handleChange} checked={sidebardata.furnished}/>
-                <span className='text-sm text-gray-700'>Furnished</span>
-              </label>
+          <div className='space-y-4 pt-4 border-t border-gray-50'>
+            <label className='text-[10px] font-bold text-gray-400 uppercase tracking-widest ml-1'>Essential Amenities</label>
+            <div className='flex flex-col gap-3.5'>
+              {[
+                {id: 'parking', label: 'Dedicated Parking'},
+                {id: 'furnished', label: 'Fully Furnished'}
+              ].map((item) => (
+                <label key={item.id} className='flex items-center gap-3 cursor-pointer group'>
+                    <div className='w-4 h-4 rounded-sm border border-gray-300 flex items-center justify-center transition-colors group-hover:border-gray-900'>
+                        <input 
+                            type='checkbox' 
+                            id={item.id} 
+                            className='peer absolute opacity-0 w-4 h-4 cursor-pointer' 
+                            onChange={handleChange} 
+                            checked={sidebardata[item.id]}
+                        />
+                        <div className='w-2 h-2 bg-gray-900 scale-0 peer-checked:scale-100 transition-transform duration-200'></div>
+                    </div>
+                    <span className='text-sm tracking-wide text-gray-600 group-hover:text-gray-900 transition-colors'>{item.label}</span>
+                </label>
+              ))}
             </div>
           </div>
 
-          <div className='space-y-2'>
-            <label className='text-xs font-semibold text-gray-500 uppercase'>Sort by</label>
-            <select onChange={handleChange} defaultValue={'createdAt_desc'} id='sort_order' className='w-full border border-gray-300 rounded-md py-2 px-3 text-sm focus:ring-1 focus:ring-blue-500 focus:border-blue-500 outline-none'>
-                <option value='regularPrice_desc'>Price (High to Low)</option>
-                <option value='regularPrice_asc'>Price (Low to High)</option>
-                <option value='createdAt_desc'>Newest arrivals</option>
-                <option value='createdAt_asc'>Oldest listings</option>
+          <div className='space-y-3 pt-4 border-t border-gray-50'>
+            <label className='text-[10px] font-bold text-gray-400 uppercase tracking-widest ml-1'>Ordering</label>
+            <select onChange={handleChange} defaultValue={'createdAt_desc'} id='sort_order' className='w-full border-b border-gray-200 py-3 text-sm font-medium focus:border-gray-900 outline-none cursor-pointer bg-transparent uppercase tracking-wider'>
+                <option value='regularPrice_desc'>Price Descending</option>
+                <option value='regularPrice_asc'>Price Ascending</option>
+                <option value='createdAt_desc'>Newly Listed</option>
+                <option value='createdAt_asc'>Established Listings</option>
             </select>
           </div>
           
-          <button className='w-full bg-blue-600 text-white font-bold py-2.5 rounded-md hover:bg-blue-700 transition-all active:scale-[0.98] text-sm mt-2'>
-            Apply Filters
+          <button className='btn-primary mt-6 uppercase text-[10px] tracking-[0.2em] font-black h-14'>
+            Apply Selection
           </button>
         </form>
       </div>
 
-      <div className='flex-1 p-6 lg:p-10'>
-        <div className='flex items-center justify-between mb-8 pb-4 border-b border-gray-100'>
-            <h1 className='text-xl font-bold text-gray-900'>{listings.length} Results found</h1>
-            <div className='text-xs text-gray-400 font-medium hidden sm:block uppercase tracking-wider'>Properties in Ethiopia</div>
+      <div className='flex-1 p-8 lg:p-16'>
+        <div className='flex items-end justify-between mb-16 border-b border-gray-100 pb-8'>
+            <div>
+                <h1 className='text-4xl font-bold text-gray-900 mb-2'>{listings.length} Results Found</h1>
+                <p className='text-xs text-gray-400 font-medium uppercase tracking-[0.2em]'>Selected Residencies • Ethiopia</p>
+            </div>
         </div>
         
-        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6'>
+        <div className='grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 gap-12'>
             {!loading && listings.length === 0 && (
-                <div className='col-span-full flex flex-col items-center justify-center py-24 text-center'>
-                    <p className='text-lg font-bold text-gray-900 mb-2'>No properties matched your search</p>
-                    <p className='text-gray-500 text-sm max-w-xs'>Try adjusting your filters or checking your spelling to find results.</p>
+                <div className='col-span-full flex flex-col items-center justify-center py-32 text-center'>
+                    <p className='text-2xl font-bold text-gray-900 mb-4 font-display italic'>No matches found</p>
+                    <p className='text-gray-400 text-sm max-w-xs leading-relaxed'>Refine your search parameters or explore our private collections for alternative options.</p>
                 </div>
             )}
             {loading && (
-                <div className='col-span-full flex flex-col items-center justify-center py-24 gap-3'>
-                    <div className='w-8 h-8 border-2 border-gray-200 border-t-blue-600 rounded-full animate-spin'></div>
-                    <p className='text-gray-400 text-xs font-medium uppercase tracking-widest'>Updating results...</p>
+                <div className='col-span-full flex flex-col items-center justify-center py-32 gap-4'>
+                    <div className='w-10 h-10 border border-gray-100 border-t-gray-900 rounded-full animate-spin'></div>
+                    <p className='text-gray-400 text-[10px] font-bold uppercase tracking-[0.3em]'>Refining...</p>
                 </div>
             )}
             {!loading && listings && listings.map((listing) => (
@@ -206,12 +225,12 @@ function Search() {
         </div>
         
         {showMore && (
-          <div className='flex justify-center mt-12'>
+          <div className='flex justify-center mt-20'>
             <button 
                 onClick={onShowMoreClick} 
-                className='px-8 py-2 border border-gray-300 text-gray-700 font-semibold text-sm rounded-md hover:bg-gray-50 transition-all active:scale-[0.98]'
+                className='px-12 py-4 border border-gray-900 text-gray-900 font-bold text-[10px] uppercase tracking-[0.3em] hover:bg-gray-900 hover:text-white transition-all duration-500'
             >
-                Load more listings
+                Load More Results
             </button>
           </div>
         )}

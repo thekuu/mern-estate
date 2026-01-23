@@ -23,36 +23,33 @@ export default function Header() {
         }
     }, [location.search])
     return (
-    <header className="bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-slate-100 shadow-sm">
-      <div className='flex justify-between items-center max-w-7xl mx-auto px-4 py-3'>
+    <header className="bg-white border-b border-gray-100 sticky top-0 z-50">
+      <div className='flex justify-between items-center max-w-7xl mx-auto px-6 py-4'>
         <Link to='/'>
-            <h1 className='font-bold text-xl sm:text-2xl tracking-tight flex items-center gap-1 group'>
-                <span className='text-indigo-600 transition-colors group-hover:text-indigo-700'>Homi</span>
-                <span className='text-slate-900'>Estate</span>
+            <h1 className='font-bold text-xl sm:text-2xl tracking-tighter flex items-center gap-1'>
+                <span className='text-gray-900 font-display italic'>Homi</span>
+                <span className='text-gray-400 font-display'>Estate</span>
             </h1> 
         </Link>
-        <form onSubmit={handleSubmit} className='bg-slate-50 border border-slate-200 px-4 py-2 rounded-full flex items-center transition-all focus-within:ring-2 focus-within:ring-indigo-100 focus-within:border-indigo-300 w-32 sm:w-80'>
-            <input type='text' placeholder='Find your home...' className='bg-transparent focus:outline-none w-full text-sm placeholder:text-slate-400' 
+        <form onSubmit={handleSubmit} className='hidden sm:flex bg-gray-50 border border-gray-100 px-4 py-2 rounded-full items-center transition-all focus-within:bg-white focus-within:shadow-sm focus-within:border-gray-200 w-64 lg:w-96'>
+            <input type='text' placeholder='Find your sanctuary...' className='bg-transparent focus:outline-none w-full text-sm font-medium text-gray-600 placeholder:text-gray-400' 
             value={searchTerm} onChange={(e)=> setSearchTerm(e.target.value)}/>
             <button className='ml-2'>
-                <HiSearch className='text-slate-500 text-lg hover:text-indigo-600 transition-colors'/>
+                <FaSearch className='text-gray-400 text-sm hover:text-gray-600 transition-colors'/>
             </button>
         </form>
-        <ul className='flex items-center gap-6'>
+        <ul className='flex items-center gap-8 font-medium text-xs tracking-widest text-gray-500 uppercase'>
             <Link to='/'>
-                <li className='hidden md:inline text-sm font-medium text-slate-600 hover:text-indigo-600 transition-colors'>Home</li>
+                <li className='hidden md:inline hover:text-gray-900 transition-colors cursor-pointer'>Home</li>
             </Link>
             <Link to='/about'>
-                <li className='hidden md:inline text-sm font-medium text-slate-600 hover:text-indigo-600 transition-colors'>About</li>
+                <li className='hidden md:inline hover:text-gray-900 transition-colors cursor-pointer'>Our Story</li>
             </Link>
-            <Link to='/profile' className='flex items-center gap-2'>
+            <Link to='/profile'>
                 {currentUser ? (
-                    <div className='flex items-center gap-3 bg-slate-50 rounded-full pl-3 pr-1 py-1 border border-slate-100 hover:bg-slate-100 transition-colors'>
-                        <span className='text-xs font-semibold text-slate-700 hidden lg:block'>{currentUser.username}</span>
-                        <img className='rounded-full h-8 w-8 object-cover border-2 border-white shadow-sm' src={currentUser.avatar || 'https://media.istockphoto.com/id/1300845620/vector/user-icon-flat-isolated-on-white-background-user-symbol-vector-illustration.jpg?s=612x612&w=0&k=20&c=yBeyba0hUkh14_jgv1OKqIH0CCSWU_4ckRkAoy2p73o='} alt='Profile'/>
-                    </div>
+                    <img className='rounded-full h-8 w-8 object-cover border border-gray-100' src={currentUser.avatar} alt='Profile'/>
                 ) : (
-                    <li className='text-sm font-semibold text-white bg-indigo-600 px-5 py-2 rounded-full hover:bg-indigo-700 transition-all shadow-sm active:scale-95'>Sign in</li>
+                    <li className='hover:text-gray-900 transition-colors'>Sign in</li>
                 )}
             </Link>    
         </ul>
