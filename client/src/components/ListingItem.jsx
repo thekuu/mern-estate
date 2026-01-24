@@ -12,9 +12,6 @@ export default function ListingItem({listing}) {
                 {listing.offer && (
                     <span className='bg-white/95 backdrop-blur-sm text-gray-900 text-[10px] font-bold px-2 py-1 rounded-sm uppercase tracking-widest shadow-sm'>Special</span>
                 )}
-                <span className='bg-gray-900/90 backdrop-blur-sm text-white text-[10px] font-bold px-2 py-1 rounded-sm uppercase tracking-widest shadow-sm'>
-                    {listing.type === 'rent' ? 'Rental' : 'Residence'}
-                </span>
             </div>
         </div>
         <div className='p-6 flex flex-col gap-4 w-full'>

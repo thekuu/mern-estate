@@ -75,7 +75,6 @@ export default function Home() {
       <div className='max-w-7xl mx-auto px-6 mb-32'>
         <div className='rounded-sm overflow-hidden bg-gray-50'>
             <Swiper 
-                navigation 
                 pagination={{ clickable: true }}
                 autoplay={{ delay: 6000 }}
                 className='h-[400px] sm:h-[600px]'

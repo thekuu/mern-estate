@@ -66,7 +66,7 @@ export default function Listing() {
       {listing && !loading && !error && (
         <div>
           <div className='relative group'>
-            <Swiper navigation pagination={{ clickable: true }} className='h-[500px] lg:h-[750px]'>
+            <Swiper pagination={{ clickable: true }} className='h-[500px] lg:h-[750px]'>
                 {listing.imageUrls.map((url) => (
                 <SwiperSlide key={url}>
                     <div
@@ -103,9 +103,6 @@ export default function Listing() {
             <div className='flex flex-col lg:flex-row justify-between items-start gap-12 mb-16 border-b border-gray-100 pb-16'>
                 <div className='flex-1 space-y-6'>
                     <div className='flex gap-4'>
-                        <span className='bg-gray-900 text-white text-[10px] font-bold px-4 py-1.5 rounded-sm uppercase tracking-[0.2em]'>
-                            {listing.type === 'rent' ? 'Rental' : 'Residence'}
-                        </span>
                         {listing.offer && (
                             <span className='border border-gray-900 text-gray-900 text-[10px] font-bold px-4 py-1.5 rounded-sm uppercase tracking-[0.2em]'>
                                 Private Collection
