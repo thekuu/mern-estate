@@ -28,7 +28,7 @@ export default function Header() {
         <Link to='/'>
             <h1 className='font-bold text-xl sm:text-2xl tracking-tighter flex items-center gap-1'>
                 <span className='text-gray-900 font-display italic'>Homi</span>
-                <span className='text-gray-400 font-display'>Estate</span>
+                <span className='text-gray-400 font-display'>Portfolio</span>
             </h1> 
         </Link>
         <form onSubmit={handleSubmit} className='hidden sm:flex bg-gray-50 border border-gray-100 px-4 py-2 rounded-full items-center transition-all focus-within:bg-white focus-within:shadow-sm focus-within:border-gray-200 w-64 lg:w-96'>

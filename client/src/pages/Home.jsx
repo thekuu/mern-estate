@@ -53,11 +53,11 @@ export default function Home() {
         <div className='max-w-7xl mx-auto pt-20 pb-16 px-6 sm:pt-32 sm:pb-24 lg:pt-48'>
           <div className='flex flex-col items-center text-center max-w-4xl mx-auto'>
             <h1 className='text-5xl sm:text-7xl lg:text-8xl font-bold tracking-tight text-gray-900 mb-8 leading-[1]'>
-              Curating spaces for <span className='italic font-display text-gray-400'>refined</span> living.
+              A <span className='italic font-display text-gray-400'>Portfolio</span> Real Estate Case Study.
             </h1>
             <p className='text-lg sm:text-xl text-gray-500 leading-relaxed mb-12 max-w-2xl'>
-              Discover Ethiopia's most distinguished properties. 
-              A seamless journey to finding your next sanctuary.
+              This is a full-stack technical demonstration showcasing MERN development, 
+              Redux state management, and modern architectural patterns.
             </p>
             <div className='flex flex-col sm:flex-row gap-6'>
               <Link to='/search' className='btn-primary'>
