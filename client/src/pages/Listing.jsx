@@ -116,7 +116,6 @@ export default function Listing() {
                         {listing.name}
                     </h1>
                     <div className='flex items-center gap-2.5 text-gray-400'>
-                        <HiLocationMarker className='text-gray-300 text-lg' />
                         <p className='text-sm uppercase tracking-[0.15em] font-medium'>{listing.address}</p>
                     </div>
                 </div>

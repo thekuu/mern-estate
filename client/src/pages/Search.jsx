@@ -124,11 +124,10 @@ function Search() {
                     type='text'
                     id='searchTerm'
                     placeholder='Addis Ababa, Bole...'
-                    className='w-full border-b border-gray-200 py-3 pl-8 pr-3 text-sm font-medium focus:border-gray-900 outline-none transition-all placeholder:italic placeholder:opacity-50'
+                    className='w-full border-b border-gray-200 py-3 pl-1 pr-3 text-sm font-medium focus:border-gray-900 outline-none transition-all placeholder:italic placeholder:opacity-50'
                     value={sidebardata.searchTerm}
                     onChange={handleChange}
                 />
-                <HiSearch className='absolute left-0 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-gray-900 transition-colors' />
             </div>
           </div>
 

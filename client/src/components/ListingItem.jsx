@@ -21,10 +21,7 @@ export default function ListingItem({listing}) {
         <div className='p-6 flex flex-col gap-4 w-full'>
             <div className='flex flex-col gap-1'>
                 <h3 className='truncate text-xl font-bold text-gray-900 leading-tight group-hover:text-gray-600 transition-colors'>{listing.name}</h3>
-                <div className='flex items-center gap-1.5'>
-                    <HiLocationMarker className='h-3.5 w-3.5 text-gray-400'/>
-                    <p className='text-xs text-gray-400 truncate w-full uppercase tracking-wider font-medium'>{listing.address}</p>
-                </div>
+                <p className='text-xs text-gray-400 truncate w-full uppercase tracking-wider font-medium'>{listing.address}</p>
             </div>
             
             <p className='text-sm text-gray-500 line-clamp-2 leading-relaxed h-10 italic'>{listing.description}</p>
