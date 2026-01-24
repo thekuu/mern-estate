@@ -1,12 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import {HiLocationMarker} from 'react-icons/hi'
 import {FaBed, FaBath} from 'react-icons/fa'
 
 export default function ListingItem({listing}) {
   return (
     <div className='premium-card rounded-sm w-full group'>
-      <Link to={`/listing/${listing._id}`}>
+      <Link to={`/listing/${listing._id}`} className='block'>
         <div className='relative aspect-[3/2] overflow-hidden bg-gray-100'>
             <img src={listing.imageUrls[0]} alt="listing cover" className='h-full w-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out'/>
             <div className='absolute top-4 left-4 flex gap-2'>
