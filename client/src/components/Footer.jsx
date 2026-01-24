@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FaGithub, FaLinkedin, FaTwitter, FaGlobe } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaTwitter, FaGlobe, FaXTwitter } from 'react-icons/fa6';
 
 export default function Footer() {
   return (
@@ -51,8 +51,8 @@ export default function Footer() {
               <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className='text-gray-400 hover:text-gray-900 transition-colors'>
                 <FaLinkedin size={18} />
               </a>
-              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className='text-gray-400 hover:text-gray-900 transition-colors'>
-                <FaTwitter size={18} />
+              <a href="https://x.com" target="_blank" rel="noopener noreferrer" className='text-gray-400 hover:text-gray-900 transition-colors'>
+                <FaXTwitter size={18} />
               </a>
               <a href="https://yourportfolio.com" target="_blank" rel="noopener noreferrer" className='text-gray-400 hover:text-gray-900 transition-colors'>
                 <FaGlobe size={18} />
