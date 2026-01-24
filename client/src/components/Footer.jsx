@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { FaGithub, FaLinkedin, FaTwitter, FaGlobe } from 'react-icons/fa';
 
 export default function Footer() {
   return (
@@ -39,9 +40,25 @@ export default function Footer() {
         </div>
         
         <div className='pt-8 border-t border-gray-50 flex flex-col md:flex-row justify-between items-center gap-4'>
-          <p className='text-xs text-gray-400'>
-            © {new Date().getFullYear()} Homi Portfolio. Developed for professional showcase purposes.
-          </p>
+          <div className='flex flex-col gap-2'>
+            <p className='text-xs text-gray-400'>
+              © {new Date().getFullYear()} Homi Portfolio. Developed for professional showcase purposes.
+            </p>
+            <div className='flex gap-4 items-center'>
+              <a href="https://github.com" target="_blank" rel="noopener noreferrer" className='text-gray-400 hover:text-gray-900 transition-colors'>
+                <FaGithub size={18} />
+              </a>
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className='text-gray-400 hover:text-gray-900 transition-colors'>
+                <FaLinkedin size={18} />
+              </a>
+              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className='text-gray-400 hover:text-gray-900 transition-colors'>
+                <FaTwitter size={18} />
+              </a>
+              <a href="https://yourportfolio.com" target="_blank" rel="noopener noreferrer" className='text-gray-400 hover:text-gray-900 transition-colors'>
+                <FaGlobe size={18} />
+              </a>
+            </div>
+          </div>
           <div className='flex gap-6'>
             <Link to='/about' className='text-xs font-bold text-gray-900 uppercase tracking-widest hover:text-gray-500 transition-all'>
               View Case Study
