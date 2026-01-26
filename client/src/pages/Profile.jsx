@@ -143,7 +143,7 @@ export default function Profile() {
               <img 
                 onClick={() => fileRef.current.click()} 
                 className='rounded-full h-24 w-24 object-cover cursor-pointer border border-gray-200' 
-                src={formData.avatar || currentUser.avatar || 'https://media.istockphoto.com/id/1300845620/vector/user-icon-flat-isolated-on-white-background-user-symbol-vector-illustration.jpg?s=612x612&w=0&k=20&c=yBeyba0hUkh14_jgv1OKqIH0CCSWU_4ckRkAoy2p73o='} 
+                src={formData.avatar || currentUser.avatar || 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png'} 
                 alt='Profile'
               />
               <button 

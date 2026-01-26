@@ -47,7 +47,7 @@ export default function Header() {
             </Link>
             <Link to='/profile'>
                 {currentUser ? (
-                    <img className='rounded-full h-8 w-8 object-cover border border-gray-100' src={currentUser.avatar} alt='Profile'/>
+                    <img className='rounded-full h-8 w-8 object-cover border border-gray-100' src={currentUser.avatar || 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png'} alt='Profile'/>
                 ) : (
                     <li className='hover:text-gray-900 transition-colors'>Sign in</li>
                 )}
