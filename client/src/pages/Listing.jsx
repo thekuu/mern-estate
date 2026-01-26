@@ -99,8 +99,8 @@ export default function Listing() {
             </div>
           </div>
           
-          <div className='max-w-6xl mx-auto p-6 lg:p-16 my-16 lg:my-24'>
-            <div className='flex flex-col lg:flex-row justify-between items-start gap-12 mb-16 border-b border-gray-100 pb-16'>
+          <div className='max-w-7xl mx-auto p-6 lg:p-12 my-12 lg:my-20'>
+            <div className='flex flex-col lg:flex-row justify-between items-start gap-8 mb-12 border-b border-gray-100 pb-12'>
                 <div className='flex-1 space-y-6'>
                     <div className='flex gap-4'>
                         {listing.offer && (
@@ -134,8 +134,8 @@ export default function Listing() {
                 </div>
             </div>
 
-            <div className='grid grid-cols-1 lg:grid-cols-12 gap-20 lg:gap-32'>
-                <div className='lg:col-span-8 space-y-20'>
+            <div className='grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16'>
+                <div className='lg:col-span-8 space-y-16'>
                     <div className='space-y-8'>
                         <h2 className='text-xs font-bold text-gray-400 uppercase tracking-[0.3em]'>The Narrative</h2>
                         <p className='text-gray-600 leading-relaxed text-xl font-medium italic border-l-2 border-gray-100 pl-8'>
