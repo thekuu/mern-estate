@@ -50,7 +50,7 @@ export default function Home() {
     <div className='bg-white min-h-screen'>
       {/* Hero Section */}
       <div className='relative'>
-        <div className='max-w-7xl mx-auto pt-20 pb-16 px-6 sm:pt-32 sm:pb-24 lg:pt-48'>
+        <div className='max-w-7xl mx-auto pt-12 pb-12 px-6 sm:pt-20 sm:pb-16 lg:pt-32'>
           <div className='flex flex-col items-center text-center max-w-4xl mx-auto'>
             <h1 className='text-5xl sm:text-7xl lg:text-8xl font-bold tracking-tight text-gray-900 mb-8 leading-[1]'>
               A <span className='italic font-display text-gray-400'>Portfolio</span> Real Estate Case Study.
