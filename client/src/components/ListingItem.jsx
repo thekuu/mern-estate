@@ -9,9 +9,6 @@ export default function ListingItem({listing}) {
         <div className='relative aspect-[3/2] overflow-hidden bg-gray-100'>
             <img src={listing.imageUrls[0]} alt="listing cover" className='h-full w-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out'/>
             <div className='absolute top-4 left-4 flex gap-2'>
-                {listing.offer && (
-                    <span className='bg-white/95 backdrop-blur-sm text-gray-900 text-[10px] font-bold px-2 py-1 rounded-sm uppercase tracking-widest shadow-sm'>Special</span>
-                )}
             </div>
         </div>
         <div className='p-6 flex flex-col gap-4 w-full'>
