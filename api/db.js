@@ -4,12 +4,15 @@ import * as schema from '../shared/schema.js';
 
 const { Pool } = pg;
 
-if (!process.env.DATABASE_URL) {
-  throw new Error('DATABASE_URL environment variable is not set.');
+const connectionString =
+  process.env.NEON_DATABASE_URL || process.env.DATABASE_URL;
+
+if (!connectionString) {
+  throw new Error(
+    'No database connection string found. Set NEON_DATABASE_URL or DATABASE_URL.'
+  );
 }
 
-export const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
-});
+export const pool = new Pool({ connectionString });
 
 export const db = drizzle(pool, { schema });
