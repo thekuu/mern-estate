@@ -166,7 +166,7 @@ async function seed() {
       type: 'sale',
       offer: true,
       imageUrls: [
-        'https://images.unsplash.com/photo-1600566753086-00f18fe6ba91?w=1600',
+        'https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=1600',
         'https://images.unsplash.com/photo-1599809275671-b5942cabc7a2?w=1600',
         'https://images.unsplash.com/photo-1600585152915-d208bec867a1?w=1600',
       ],
@@ -225,7 +225,7 @@ async function seed() {
       imageUrls: [
         'https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?w=1600',
         'https://images.unsplash.com/photo-1572120360610-d971b9d7767c?w=1600',
-        'https://images.unsplash.com/photo-1600566753051-09a64bb5fa3a?w=1600',
+        'https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?w=1600',
       ],
     },
     {
