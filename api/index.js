@@ -1,5 +1,6 @@
 import express from 'express';
 import dotenv from 'dotenv';
+import cors from 'cors';
 import userRouter from './routes/user.route.js';
 import authRouter from "./routes/auth.route.js";
 import listingRouter from "./routes/listing.route.js";
@@ -16,6 +17,23 @@ pool
 const __dirname = path.resolve();
 
 const app = express();
+
+const allowedOrigins = [
+  'https://mern-blog-vzzt.onrender.com',
+  ...(process.env.FRONTEND_URL ? [process.env.FRONTEND_URL] : []),
+];
+
+app.use(cors({
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin) || /\.netlify\.app$/.test(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true,
+}));
+
 app.use(express.json());
 app.use(cookieParser());
 
