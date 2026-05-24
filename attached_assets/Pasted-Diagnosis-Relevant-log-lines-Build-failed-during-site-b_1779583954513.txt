@@ -1,0 +1,42 @@
+Diagnosis
+
+Relevant log lines:
+
+Build failed during site build: line 83.
+Netlify's secrets scanner found a secret in your build output: line 91 (“Secret env var "VITE_FIREBASE_API_KEY"'s value detected: found value at line 1455 in dist/assets/index-T_kotPUJ”).
+Secrets scanning summary and error: lines 99-104.
+Your Netlify build config environment shows VITE_FIREBASE_API_KEY is present during build: line 111.
+Error type and cause: Netlify's secrets scanning blocked the build because the value of VITE_FIREBASE_API_KEY was inlined into the client bundle (dist/assets/index-...js). Vite exposes env vars prefixed with VITE_ into the client bundle at build time, so the actual value was present in the built JS and detected as a secret.
+
+Solution
+
+Choose one of these based on whether the API key is considered sensitive:
+
+If the Firebase API key is public (Firebase client API keys are typically public):
+Tell Netlify to ignore that key in secrets scanning. You can do this via netlify.toml or via the Netlify UI.
+
+netlify.toml (add to repo root):
+
+[build.environment]
+  # allow this env var to appear in build output without failing the secrets scan
+  SECRETS_SCAN_OMIT_KEYS = "VITE_FIREBASE_API_KEY"
+Or set the environment variable in the Netlify UI:
+
+Site settings → Build & deploy → Environment → Add variable
+Name: SECRETS_SCAN_OMIT_KEYS
+Value: VITE_FIREBASE_API_KEY
+Alternatively you may ignore the build output path instead:
+
+[build.environment]
+  SECRETS_SCAN_OMIT_PATHS = "client/dist/**"
+After adding one of the above, trigger a new deploy.
+If the API key is sensitive and must not be exposed:
+Stop embedding it into the client bundle. Remove VITE_FIREBASE_API_KEY from your Netlify build environment and from any code that runs at build time.
+Move any privileged operations to server-side code (server endpoints or serverless functions) that keep secrets in environment variables, and have the client call those endpoints.
+Rotate/regenerate the API key if it has been committed or exposed.
+Quick checks to perform now
+
+Confirm you did not commit the actual key to the repo (search repository for the literal key). If it was committed, remove it and rotate the secret.
+Confirm the env var is set in your Netlify site settings if you expect it to be injected at build time (you can remove it if you don't want it used).
+Rerun deploy after applying either (1) or (2).
+If you want the Netlify docs about secrets scanning, this message in the build log points to more info: line 97.

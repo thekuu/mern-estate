@@ -3,6 +3,9 @@
   command = "npm run build"
   publish = "dist"
 
+[build.environment]
+  SECRETS_SCAN_OMIT_KEYS = "VITE_FIREBASE_API_KEY"
+
 # Proxy all /api/* calls to the Render backend
 [[redirects]]
   from   = "/api/*"
