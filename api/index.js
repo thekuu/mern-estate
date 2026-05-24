@@ -19,7 +19,7 @@ const __dirname = path.resolve();
 const app = express();
 
 const allowedOrigins = [
-  'https://mern-blog-vzzt.onrender.com',
+  'https://homi-estate.onrender.com',
   ...(process.env.FRONTEND_URL ? [process.env.FRONTEND_URL] : []),
 ];
 
