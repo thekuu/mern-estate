@@ -5,19 +5,3 @@
 
 [build.environment]
   SECRETS_SCAN_OMIT_KEYS = "VITE_FIREBASE_API_KEY"
-
-# Proxy all /api/* calls to the Render backend
-[[redirects]]
-  from   = "/api/*"
-  to     = "https://mern-blog-vzzt.onrender.com/api/:splat"
-  status = 200
-  force  = true
-
-  [redirects.headers]
-    X-Forwarded-Host = ":host"
-
-# SPA fallback — let React Router handle all routes
-[[redirects]]
-  from   = "/*"
-  to     = "/index.html"
-  status = 200
