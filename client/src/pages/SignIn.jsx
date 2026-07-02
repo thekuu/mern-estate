@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux'
 import { signInFailure, signInStart, signInSuccess } from '../redux/user/userSlice';
 import OAuth from '../components/OAuth';
@@ -9,6 +9,7 @@ export default function SignIn() {
   const {loading, error} = useSelector((state) => state.user)
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { state } = useLocation();
   const handleChange = (e) => {
     setFormData({
       ...formData, //to keep the unchanged data as it is
@@ -32,14 +33,13 @@ export default function SignIn() {
         return;
       }
       dispatch(signInSuccess(data))
-      navigate('/');     
+      navigate(state?.from || '/');
     } catch (error) {
       dispatch(signInFailure(error.message));
     }
 
     
   }
-  console.log(formData)
   return (
     <div className='p-6 max-w-lg mx-auto min-h-[calc(100vh-160px)] flex flex-col justify-center'>
       <div className='bg-white p-10 border border-gray-100 rounded-sm shadow-sm'>

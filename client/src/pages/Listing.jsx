@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useParams, Link } from 'react-router-dom'
+import { useParams, Link, useLocation } from 'react-router-dom'
 import {Swiper, SwiperSlide} from 'swiper/react'
 import SwiperCore from 'swiper'
 import { useSelector } from 'react-redux'
@@ -23,6 +23,7 @@ export default function Listing() {
     const [contact, setContact] = useState(false)
     const params =  useParams()
     const {currentUser} = useSelector((state)=> state.user)
+    const location = useLocation()
     SwiperCore.use([Navigation, Pagination, Autoplay]) 
 
     useEffect(()=> {
@@ -177,7 +178,10 @@ export default function Listing() {
                                 </button>
                             )}
                             {!currentUser && (
-                                <Link to='/sign-in' className='block w-full text-center py-5 text-gray-400 text-[10px] font-bold uppercase tracking-[0.2em] border border-gray-200 hover:text-gray-900 hover:border-gray-900 transition-all'>
+                                <Link
+                                    to='/sign-in'
+                                    state={{ from: location.pathname }}
+                                    className='block w-full text-center py-5 text-gray-400 text-[10px] font-bold uppercase tracking-[0.2em] border border-gray-200 hover:text-gray-900 hover:border-gray-900 transition-all'>
                                     Authenticate to proceed
                                 </Link>
                             )}
