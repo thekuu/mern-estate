@@ -20,6 +20,7 @@ const app = express();
 
 const allowedOrigins = [
   'https://homi-estate.onrender.com',
+  'https://homiestate.netlify.app',
   ...(process.env.FRONTEND_URL ? [process.env.FRONTEND_URL] : []),
 ];
 
