@@ -11,6 +11,8 @@ const _fetch = window.fetch.bind(window);
 window.fetch = (input, init) => {
   if (typeof input === 'string' && input.startsWith('/api/')) {
     input = (import.meta.env.VITE_API_URL ?? '') + input;
+    // Always send cookies for cross-origin API calls (JWT auth)
+    init = { credentials: 'include', ...init };
   }
   return _fetch(input, init);
 };
