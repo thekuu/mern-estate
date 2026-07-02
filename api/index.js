@@ -56,7 +56,9 @@ app.get('*', (req, res) => {
 
 app.use((err, req, res, next) => {
   const statusCode = err.statusCode || 500;
-  const message = err.message || 'Internal Server Error';
+  // Don't expose raw DB query errors to the client
+  const isDbError = !err.statusCode && (err.message?.startsWith('Failed query') || err.cause?.code);
+  const message = isDbError ? 'Something went wrong. Please try again.' : (err.message || 'Internal Server Error');
   return res.status(statusCode).json({
     success: false,
     statusCode,

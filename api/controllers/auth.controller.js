@@ -13,6 +13,14 @@ export const signup = async (req, res, next) => {
     await db.insert(users).values({ username, email, password: hashedPassword });
     res.status(201).json("User created successfully");
   } catch (error) {
+    // PostgreSQL unique constraint violation code is 23505
+    const cause = error?.cause ?? error;
+    if (cause?.code === '23505') {
+      const detail = cause?.detail ?? '';
+      if (detail.includes('username')) return next(errorHandler(409, 'Username is already taken.'));
+      if (detail.includes('email')) return next(errorHandler(409, 'An account with this email already exists.'));
+      return next(errorHandler(409, 'Username or email is already taken.'));
+    }
     next(error);
   }
 };
