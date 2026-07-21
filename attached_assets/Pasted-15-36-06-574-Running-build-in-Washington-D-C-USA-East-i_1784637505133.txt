@@ -1,0 +1,69 @@
+15:36:06.574 Running build in Washington, D.C., USA (East) – iad1
+15:36:06.575 Build machine configuration: 2 cores, 8 GB
+15:36:06.681 Cloning github.com/thekuu/mern-estate (Branch: main, Commit: 1f46089)
+15:36:06.682 Previous build caches not available.
+15:36:06.912 Cloning completed: 231.000ms
+15:36:07.178 Running "vercel build"
+15:36:07.198 Vercel CLI 56.2.0
+15:36:07.964 Installing dependencies...
+15:36:09.816 npm warn deprecated @esbuild-kit/core-utils@3.3.2: Merged into tsx: https://tsx.is
+15:36:09.829 npm warn deprecated @esbuild-kit/esm-loader@2.6.5: Merged into tsx: https://tsx.is
+15:36:11.997 
+15:36:11.997 added 168 packages in 4s
+15:36:11.998 
+15:36:11.998 23 packages are looking for funding
+15:36:11.998   run `npm fund` for details
+15:36:12.047 Running "npm run build"
+15:36:12.155 
+15:36:12.156 > real-estate@1.0.0 build
+15:36:12.156 > npm install && npm install --prefix client && npm run build --prefix client
+15:36:12.156 
+15:36:13.353 
+15:36:13.354 up to date, audited 169 packages in 1s
+15:36:13.354 
+15:36:13.354 23 packages are looking for funding
+15:36:13.355   run `npm fund` for details
+15:36:13.381 
+15:36:13.382 13 vulnerabilities (6 moderate, 6 high, 1 critical)
+15:36:13.383 
+15:36:13.383 To address issues that do not require attention, run:
+15:36:13.383   npm audit fix
+15:36:13.383 
+15:36:13.384 To address all issues (including breaking changes), run:
+15:36:13.384   npm audit fix --force
+15:36:13.384 
+15:36:13.384 Run `npm audit` for details.
+15:36:15.430 npm warn deprecated rimraf@3.0.2: Rimraf versions prior to v4 are no longer supported
+15:36:15.819 npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+15:36:15.924 npm warn deprecated glob@7.2.3: Glob versions prior to v9 are no longer supported
+15:36:16.523 npm warn deprecated @humanwhocodes/config-array@0.13.0: Use @eslint/config-array instead
+15:36:16.619 npm warn deprecated @humanwhocodes/object-schema@2.0.3: Use @eslint/object-schema instead
+15:36:22.253 npm warn deprecated eslint@8.57.1: This version is no longer supported. Please see https://eslint.org/version-support for other options.
+15:37:41.500 
+15:37:41.501 added 448 packages, and audited 449 packages in 1m
+15:37:41.502 
+15:37:41.502 128 packages are looking for funding
+15:37:41.502   run `npm fund` for details
+15:37:42.180 
+15:37:42.181 34 vulnerabilities (1 low, 16 moderate, 14 high, 3 critical)
+15:37:42.181 
+15:37:42.182 To address issues that do not require attention, run:
+15:37:42.182   npm audit fix
+15:37:42.182 
+15:37:42.182 To address all issues (including breaking changes), run:
+15:37:42.182   npm audit fix --force
+15:37:42.182 
+15:37:42.182 Run `npm audit` for details.
+15:37:42.331 
+15:37:42.332 > client@0.0.0 build
+15:37:42.333 > vite build
+15:37:42.333 
+15:37:42.569 vite v5.4.9 building for production...
+15:37:42.616 transforming...
+15:37:42.889 Browserslist: caniuse-lite is outdated. Please run:
+15:37:42.890   npx update-browserslist-db@latest
+15:37:42.890   Why you should do it regularly: https://github.com/browserslist/update-db#readme
+15:37:42.960 
+15:37:42.961 warn - As of Tailwind CSS v3.3, the `@tailwindcss/line-clamp` plugin is now included by default.
+15:37:42.961 warn - Remove it from the `plugins` array in your configuration to eliminate this warning.
+15:37:45.865 ✓ 142 modules transformed.
