@@ -1,3 +1,4 @@
+import { apiFetch } from '../utils/apiFetch';
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import OAuth from '../components/OAuth';
@@ -18,7 +19,7 @@ export default function SignUp() {
     setLoading(true)
     e.preventDefault();
     try {
-      const res = await fetch ('/api/auth/signup', { //proxy needs to be created inside vite.config.js
+      const res = await apiFetch('/api/auth/signup', { //proxy needs to be created inside vite.config.js
         method: "POST",
         headers: {
           'Content-Type': 'application/json',

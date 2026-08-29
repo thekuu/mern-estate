@@ -1,3 +1,4 @@
+import { apiFetch } from '../utils/apiFetch';
 import { getDownloadURL, getStorage, uploadBytesResumable, ref } from 'firebase/storage';
 import React, { useRef, useState } from 'react'
 import { app } from '../firebase'
@@ -110,7 +111,7 @@ export default function CreateListing() {
       if(+formData.regularPrice < +formData.discountPrice) return setError('Discount price must be lower than regular price')
       setLoading(true)
       setError(false)
-      const res = await fetch('/api/listing/create', {
+      const res = await apiFetch('/api/listing/create', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

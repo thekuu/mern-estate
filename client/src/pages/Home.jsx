@@ -1,3 +1,4 @@
+import { apiFetch } from '../utils/apiFetch';
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import {Swiper, SwiperSlide} from 'swiper/react'
@@ -19,9 +20,9 @@ export default function Home() {
       try {
         setLoading(true);
         const [offerRes, rentRes, saleRes] = await Promise.all([
-          fetch('/api/listing/get?offer=true&limit=4'),
-          fetch('/api/listing/get?type=rent&limit=4'),
-          fetch('/api/listing/get?type=sale&limit=4')
+          apiFetch('/api/listing/get?offer=true&limit=4'),
+          apiFetch('/api/listing/get?type=rent&limit=4'),
+          apiFetch('/api/listing/get?type=sale&limit=4')
         ]);
         
         const [offerData, rentData, saleData] = await Promise.all([

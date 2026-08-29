@@ -1,3 +1,4 @@
+import { apiFetch } from '../utils/apiFetch';
 import React from 'react'
 import {GoogleAuthProvider, getAuth, signInWithPopup} from 'firebase/auth'
 import { app } from '../firebase'
@@ -14,7 +15,7 @@ export default function OAuth() {
             const auth = getAuth(app)
 
             const result = await signInWithPopup(auth, provider)
-            const res = await fetch ('/api/auth/google', {
+            const res = await apiFetch('/api/auth/google', {
                 method: 'POST',
                 headers: {
                     'Content-type': 'application/json',

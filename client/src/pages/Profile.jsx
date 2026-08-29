@@ -1,3 +1,4 @@
+import { apiFetch } from '../utils/apiFetch';
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useRef } from 'react'
@@ -51,7 +52,7 @@ export default function Profile() {
     e.preventDefault();
     try {
       dispatch(updateUserStart());
-      const res = await fetch(`/api/user/update/${currentUser._id}`, {
+      const res = await apiFetch(`/api/user/update/${currentUser._id}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -74,7 +75,7 @@ export default function Profile() {
   const handleDeleteUser = async () => {
     try {
       dispatch(deleteUserStart());
-      const res = await fetch(`/api/user/delete/${currentUser._id}`, {
+      const res = await apiFetch(`/api/user/delete/${currentUser._id}`, {
         method: 'DELETE', 
       });
       const data = await res.json();
@@ -91,7 +92,7 @@ export default function Profile() {
   const handleSignout = async () => {
     try {
       dispatch(signoutUserStart())
-      const res = await fetch('/api/auth/signout');
+      const res = await apiFetch('/api/auth/signout');
       const data = await res.json();
       if (data.success === false) {
         dispatch(signoutUserFailure(data.message));
@@ -105,7 +106,7 @@ export default function Profile() {
   const handleShowListings = async () => {
     try {
       setShowListingsError(false)
-      const res = await fetch (`/api/user/listings/${currentUser._id}`)
+      const res = await apiFetch(`/api/user/listings/${currentUser._id}`)
       const data = await res.json()
       if(data.success === false) {
         setShowListingsError(true);
@@ -118,7 +119,7 @@ export default function Profile() {
   }
   const handleDeleteListing = async(listingId) => {
     try {
-      const res = await fetch (`/api/listing/delete/${listingId}`, {
+      const res = await apiFetch(`/api/listing/delete/${listingId}`, {
         method: 'DELETE'
       });
       const data = await res.json()

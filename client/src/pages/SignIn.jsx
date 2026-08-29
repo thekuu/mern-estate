@@ -1,3 +1,4 @@
+import { apiFetch } from '../utils/apiFetch';
 import React, { useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux'
@@ -20,7 +21,7 @@ export default function SignIn() {
     e.preventDefault();
     try {
       dispatch(signInStart())
-      const res = await fetch ('/api/auth/signin', { //proxy needs to be created inside vite.config.js
+      const res = await apiFetch('/api/auth/signin', { //proxy needs to be created inside vite.config.js
         method: "POST",
         headers: {
           'Content-Type': 'application/json',
