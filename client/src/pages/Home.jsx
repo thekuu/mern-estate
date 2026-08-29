@@ -11,39 +11,36 @@ export default function Home() {
   const [offerListings, setOfferListings] = useState([])
   const [saleListings, setSaleListings] = useState([])
   const [rentListings, setRentListings] = useState([])
+  const [loading, setLoading] = useState(true)
   SwiperCore.use([Navigation, Pagination, Autoplay]) 
 
   useEffect (() => {
-    const fetchOfferListings = async () => {
+    const fetchListings = async () => {
       try {
-        const res = await fetch('/api/listing/get?offer=true')
-        const data = await res.json()
-        setOfferListings(data)
-        fetchRentListings()
+        setLoading(true);
+        const [offerRes, rentRes, saleRes] = await Promise.all([
+          fetch('/api/listing/get?offer=true&limit=4'),
+          fetch('/api/listing/get?type=rent&limit=4'),
+          fetch('/api/listing/get?type=sale&limit=4')
+        ]);
+        
+        const [offerData, rentData, saleData] = await Promise.all([
+          offerRes.json(),
+          rentRes.json(),
+          saleRes.json()
+        ]);
+
+        setOfferListings(offerData);
+        setRentListings(rentData);
+        setSaleListings(saleData);
       } catch (error) {
-        console.log(error)
+        console.log(error);
+      } finally {
+        setLoading(false);
       }
-    }
-    const fetchRentListings = async () => {
-      try {
-        const res = await fetch('/api/listing/get?type=rent')
-        const data = await res.json()
-        setRentListings(data)
-        fetchSaleListings()
-      } catch (error) {
-        console.log(error)
-      }
-    }
-    const fetchSaleListings = async () => {
-      try {
-        const res = await fetch('/api/listing/get?type=sale')
-        const data = await res.json()
-        setSaleListings(data) 
-      } catch (error) {
-        console.log(error)
-      }
-    }
-    fetchOfferListings()
+    };
+    
+    fetchListings();
   }, [])
 
   return (
@@ -101,61 +98,70 @@ export default function Home() {
 
       {/* Sections */}
       <div className='max-w-7xl mx-auto px-6 flex flex-col gap-32 pb-32'>
-        {offerListings && offerListings.length > 0 && (
-          <div>
-            <div className="flex items-baseline justify-between mb-12 border-b border-gray-100 pb-6">
+        {loading ? (
+            <div className='flex flex-col items-center justify-center py-20 gap-4'>
+                <div className='w-10 h-10 border border-gray-100 border-t-gray-900 rounded-full animate-spin'></div>
+                <p className='text-gray-400 text-[10px] font-bold uppercase tracking-[0.3em]'>Curating Collections...</p>
+            </div>
+        ) : (
+          <>
+            {offerListings && offerListings.length > 0 && (
               <div>
-                <h2 className='text-3xl font-bold text-gray-900 mb-2'>Private Collections</h2>
-                <p className='text-gray-400 text-sm uppercase tracking-widest font-medium'>Exclusive opportunities</p>
+                <div className="flex items-baseline justify-between mb-12 border-b border-gray-100 pb-6">
+                  <div>
+                    <h2 className='text-3xl font-bold text-gray-900 mb-2'>Private Collections</h2>
+                    <p className='text-gray-400 text-sm uppercase tracking-widest font-medium'>Exclusive opportunities</p>
+                  </div>
+                  <Link className='text-gray-900 text-xs font-bold uppercase tracking-widest border-b border-gray-900 pb-1 hover:text-gray-500 hover:border-gray-500 transition-all' to={'/search?offer=true'}>
+                    View All
+                  </Link>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+                  {offerListings.map((listing) => 
+                    <ListingItem listing={listing} key={listing._id}/>
+                  )}
+                </div>
               </div>
-              <Link className='text-gray-900 text-xs font-bold uppercase tracking-widest border-b border-gray-900 pb-1 hover:text-gray-500 hover:border-gray-500 transition-all' to={'/search?offer=true'}>
-                View All
-              </Link>
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
-              {offerListings.map((listing) => 
-                <ListingItem listing={listing} key={listing._id}/>
-              )}
-            </div>
-          </div>
-        )}
+            )}
 
-        {rentListings && rentListings.length > 0 && (
-          <div>
-            <div className="flex items-baseline justify-between mb-12 border-b border-gray-100 pb-6">
+            {rentListings && rentListings.length > 0 && (
               <div>
-                <h2 className='text-3xl font-bold text-gray-900 mb-2'>Exceptional Rentals</h2>
-                <p className='text-gray-400 text-sm uppercase tracking-widest font-medium'>Temporary sanctuaries</p>
+                <div className="flex items-baseline justify-between mb-12 border-b border-gray-100 pb-6">
+                  <div>
+                    <h2 className='text-3xl font-bold text-gray-900 mb-2'>Exceptional Rentals</h2>
+                    <p className='text-gray-400 text-sm uppercase tracking-widest font-medium'>Temporary sanctuaries</p>
+                  </div>
+                  <Link className='text-gray-900 text-xs font-bold uppercase tracking-widest border-b border-gray-900 pb-1 hover:text-gray-500 hover:border-gray-500 transition-all' to={'/search?type=rent'}>
+                    Explore
+                  </Link>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+                  {rentListings.map((listing) => 
+                    <ListingItem listing={listing} key={listing._id}/>
+                  )}
+                </div>
               </div>
-              <Link className='text-gray-900 text-xs font-bold uppercase tracking-widest border-b border-gray-900 pb-1 hover:text-gray-500 hover:border-gray-500 transition-all' to={'/search?type=rent'}>
-                Explore
-              </Link>
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
-              {rentListings.map((listing) => 
-                <ListingItem listing={listing} key={listing._id}/>
-              )}
-            </div>
-          </div>
-        )}
+            )}
 
-        {saleListings && saleListings.length > 0 && (
-          <div>
-            <div className="flex items-baseline justify-between mb-12 border-b border-gray-100 pb-6">
+            {saleListings && saleListings.length > 0 && (
               <div>
-                <h2 className='text-3xl font-bold text-gray-900 mb-2'>For Purchase</h2>
-                <p className='text-gray-400 text-sm uppercase tracking-widest font-medium'>Invest in your future</p>
+                <div className="flex items-baseline justify-between mb-12 border-b border-gray-100 pb-6">
+                  <div>
+                    <h2 className='text-3xl font-bold text-gray-900 mb-2'>For Purchase</h2>
+                    <p className='text-gray-400 text-sm uppercase tracking-widest font-medium'>Invest in your future</p>
+                  </div>
+                  <Link className='text-gray-900 text-xs font-bold uppercase tracking-widest border-b border-gray-900 pb-1 hover:text-gray-500 hover:border-gray-500 transition-all' to={'/search?type=sale'}>
+                    View Selection
+                  </Link>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+                  {saleListings.map((listing) => 
+                    <ListingItem listing={listing} key={listing._id}/>
+                  )}
+                </div>
               </div>
-              <Link className='text-gray-900 text-xs font-bold uppercase tracking-widest border-b border-gray-900 pb-1 hover:text-gray-500 hover:border-gray-500 transition-all' to={'/search?type=sale'}>
-                View Selection
-              </Link>
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
-              {saleListings.map((listing) => 
-                <ListingItem listing={listing} key={listing._id}/>
-              )}
-            </div>
-          </div>
+            )}
+          </>
         )}
       </div>
     </div>

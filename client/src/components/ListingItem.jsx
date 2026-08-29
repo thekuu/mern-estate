@@ -7,7 +7,7 @@ export default function ListingItem({listing}) {
     <div className='premium-card rounded-sm w-full group'>
       <Link to={`/listing/${listing._id}`} className='block'>
         <div className='relative aspect-[3/2] overflow-hidden bg-gray-100'>
-            <img src={listing.imageUrls[0]} alt="listing cover" className='h-full w-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out'/>
+            <img src={listing.imageUrls[0]} alt="listing cover" loading="lazy" className='h-full w-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out'/>
             <div className='absolute top-4 left-4 flex gap-2'>
             </div>
         </div>
